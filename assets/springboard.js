@@ -889,9 +889,13 @@ $(document).ready(function () {
       let strCityInfo = JSON.stringify(cityInfo);
       localStorage.setItem('cityInfo', strCityInfo)
 
-      getEvents(page);
+      
       getWeather(weatherCity);
+      getEvents(page);
+      
       restaurantRecs(cityID);
+      
+      
      
     }).catch(function (err) {
       console.log("ERR FOR AJAX CALL", err)
@@ -1457,5 +1461,13 @@ function getWeather(){
       .catch(function (err) {
         console.log(err);
       });
+  }
+
+  mainC(); 
+  function mainC(){
+    localStorageCityInfo = JSON.parse(localStorage.getItem('cityInfo'));
+    mCity = localStorageCityInfo.name;
+    $("#cityTitle").text("Current location: " + mCity)
+
   }
 });
